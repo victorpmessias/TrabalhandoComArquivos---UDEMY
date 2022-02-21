@@ -23,6 +23,7 @@ public class Program {
 		File outPath = new File(strPath+"\\out\\summary.csv");
 		
 //		Lendo dados do arquivo, e criando uma lista de produtos
+//		Reading data and creating a list of products
 		try(BufferedReader br = new BufferedReader(new FileReader(inPath))){
 			System.out.println("In file: ");
 			String line = br.readLine();
@@ -39,12 +40,14 @@ public class Program {
 		}
 		
 //		Testando se a pasta de saida existe, caso não a mesma é criada
+//		Testing if the out folder exists, if not, it's created
 		if(!outPath.exists()) {
 			boolean success = new File(strPath+"\\out").mkdir();
 			System.out.println("Out directory created: " + success);
 		}
 		
 //		Criando arquivo com o valor total(quantiade x valor) de cada produto
+//		Creating file with total value(quantity x valor) of each product
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(outPath))){
 			products.stream().forEach(p -> {
 				try {
@@ -60,6 +63,7 @@ public class Program {
 		}
 		
 //		Lendo arquivo com valor total que foi criado
+//		Reading out file with the total value it was created
 		try (BufferedReader br = new BufferedReader(new FileReader(outPath))){
 			System.out.println();
 			System.out.println("Out file: ");
